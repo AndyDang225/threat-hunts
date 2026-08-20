@@ -29,3 +29,16 @@ DeviceLogonEvents
 | order by TimeGenerated asc
 ```
 <img width="685" height="309" alt="Screenshot 2026-08-20 164946" src="https://github.com/user-attachments/assets/26fc7b03-7281-4a84-af0e-3e62acd4bbec" />
+
+### First Moves Inside
+Once in, the attacker enumerated through commands to see the privileges of the account and where the workstation is in the network.
+``kql
+DeviceProcessEvents
+| where DeviceName startswith "nh-wks-it-01"
+| where TimeGenerated between (datetime(2026-05-25) .. datetime(2026-05-30))
+| where AccountName == "m.reed"
+| where InitiatingProcessCommandLine contains "cmd.exe"
+| project TimeGenerated, AccountName, ActionType, ProcessCommandLine, InitiatingProcessCommandLine
+| sort by TimeGenerated asc 
+```
+<img width="899" height="641" alt="Screenshot 2026-08-20 170021" src="https://github.com/user-attachments/assets/b8984bc3-f0eb-4814-b641-3ee41524fbd2" />

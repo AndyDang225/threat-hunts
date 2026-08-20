@@ -57,6 +57,8 @@ DeviceFileEvents
 | project TimeGenerated, InitiatingProcessAccountName, ActionType, FileName, FolderPath, InitiatingProcessCommandLine
 | sort by TimeGenerated asc
 ```
+<img width="1069" height="177" alt="Screenshot 2026-08-20 185123" src="https://github.com/user-attachments/assets/072b8d09-36e1-46cd-851d-4aa35a74170c" />
+
 
 ### Data Exfiltration
 

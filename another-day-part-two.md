@@ -30,7 +30,7 @@ DeviceLogonEvents
 ```
 <img width="685" height="309" alt="Screenshot 2026-08-20 164946" src="https://github.com/user-attachments/assets/26fc7b03-7281-4a84-af0e-3e62acd4bbec" />
 
-### First Moves Inside
+### Looking Inside
 Once in, the attacker enumerated through commands to see the privileges of the account and where the workstation is in the network.
 ```kql
 DeviceProcessEvents
@@ -42,3 +42,9 @@ DeviceProcessEvents
 | sort by TimeGenerated asc 
 ```
 <img width="899" height="641" alt="Screenshot 2026-08-20 170021" src="https://github.com/user-attachments/assets/b8984bc3-f0eb-4814-b641-3ee41524fbd2" />
+
+Two commands stand out:
+ - net  view \\NH-FS-01
+ - net  group "NH-HR-Users" /domain
+
+

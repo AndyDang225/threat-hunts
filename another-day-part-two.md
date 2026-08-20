@@ -46,5 +46,18 @@ DeviceProcessEvents
 Two commands stand out:
  - net  view \\NH-FS-01
  - net  group "NH-HR-Users" /domain
+The attacker enumerated the HR group with the privileges of an IT Support Technician.
+After that, the attacker opened a file that belonged to that group: access_request_queue_20260526.csv
+```kql
+DeviceFileEvents
+| where DeviceName startswith "nh-wks-it-01"
+| where TimeGenerated between (datetime(2026-05-29T01:30:09.1674998Z) .. datetime(2026-05-29T01:56:12.3713693Z))
+| where InitiatingProcessAccountName == "m.reed"
+| where InitiatingProcessCommandLine contains "cmd.exe"
+| project TimeGenerated, InitiatingProcessAccountName, ActionType, FileName, FolderPath, InitiatingProcessCommandLine
+| sort by TimeGenerated asc
+```
+
+### Data Exfiltration
 
 

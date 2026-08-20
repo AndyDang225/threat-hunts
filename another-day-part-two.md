@@ -32,7 +32,7 @@ DeviceLogonEvents
 
 ### First Moves Inside
 Once in, the attacker enumerated through commands to see the privileges of the account and where the workstation is in the network.
-``kql
+```kql
 DeviceProcessEvents
 | where DeviceName startswith "nh-wks-it-01"
 | where TimeGenerated between (datetime(2026-05-25) .. datetime(2026-05-30))
